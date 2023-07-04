@@ -1,5 +1,8 @@
 # How to Set Up Proxies in Guzzle: PHP Tutorial
 
+[![Oxylabs promo code](https://user-images.githubusercontent.com/129506779/250792357-8289e25e-9c36-4dc0-a5e2-2706db797bb5.png)](https://oxylabs.go2cloud.org/aff_c?offer_id=7&aff_id=877&url_id=112)
+
+
 ## Introduction
 
 Guzzle is a PHP HTTP client meant to facilitate HTTP requests sending and integration with web services. Its simple interface allows for building query strings, streaming large uploads and downloads, and more. With Guzzle, you no longer need to bother with stream contexts, cURL options, or sockets. 
