@@ -58,17 +58,17 @@ use GuzzleHttp\Client;
 
 ```php
 $client = new Client();
-$client->request('GET', 'https://ip.oxylabs.io', 
+$client->request('GET', 'https://ip.oxylabs.io/location', 
     ['proxy' => 'http://username:password@<proxy_address>:<port>']);
 ```
 
-As you can see, we are initiating a `Client` object and then using it to send a GET request to the <https://ip.oxylabs.io> website. We are also passing the `proxy` as an extra argument.
+As you can see, we are initiating a `Client` object and then using it to send a GET request to the <https://ip.oxylabs.io/location> website. We are also passing the `proxy` as an extra argument.
 
 Note: In the proxy URL, we are passing username, password, IP address, and port. You will have to replace these with your Oxylabs’ sub-user’s credentials. If the IP address is public and doesn’t require any authentication, then we can omit the username and password and send the request as below:
 
 ```php
 $client = new Client(); 
-$client->request('GET', 'https://ip.oxylabs.io', ['proxy' => 'http://<proxy_address>:<port>']); 
+$client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://<proxy_address>:<port>']); 
 ```
 
 ## Rotating Proxies
@@ -83,10 +83,10 @@ First, let’s set up Oxylabs' Residential HTTP proxy. Input “pr.oxylabs.io”
 
 ```php
 $client = new Client();
-echo($client->request('GET', 'https://ip.oxylabs.io', ['proxy' => 'http://username:password@pr.oxylabs.io:7777'])->getBody());
+echo($client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://username:password@pr.oxylabs.io:7777'])->getBody());
 ```
 
-We are grabbing the Body of the response and printing it using `echo`. If everything works correctly, you should see an IP address in the terminal as soon as you execute the above code. 
+We are grabbing the Body of the response and printing it using `echo`. If everything works correctly, you should see an IP address and other location data in the terminal as soon as you execute the above code. 
 
 ### Oxylab’s Dedicated Datacenter HTTP Proxy Setup
 
@@ -95,7 +95,7 @@ data center IP address as the Server address. And, the port must be set to `6000
 
 ```php
 $client = new Client();
-$r = $client->request('GET', 'https://ip.oxylabs.io', ['proxy' => 'http://username:password@192.168.2.100:60000'])
+$r = $client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://username:password@192.168.2.100:60000'])
 echo($r->getBody());
 ```
 
@@ -109,7 +109,7 @@ For the shared Datacenter Proxy, the server address will be `dc.pr.oxylabs.io` a
 
 ```php
 $client = new Client();
-$r = $client->request('GET', 'https://ip.oxylabs.io', ['proxy' => 'http://username:password@dc.pr.oxylabs.io:10000'])
+$r = $client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://username:password@dc.pr.oxylabs.io:10000'])
 echo($r->getBody());
 ```
 
@@ -121,7 +121,7 @@ For example, let’s say you have whitelisted your IP address for using the Oxyl
 
 ```php
 $client = new Client();
-echo($client->request('GET', 'https://ip.oxylabs.io', ['proxy' => 'http://pr.oxylabs.io:7777'])->getBody());
+echo($client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://pr.oxylabs.io:7777'])->getBody());
 ```
 
 Oxylabs will automatically detect the IP address from your request and match it with the whitelisted IP and let your request pass through. The same technique can be used with Datacenter Proxies as well. Once whitelisted, you can omit the username and password for those two as well.
@@ -130,14 +130,14 @@ So for Dedicated Datacenter Proxies, the code will look like this:
 
 ```php
 $client = new Client();
-echo($client->request('GET', 'https://ip.oxylabs.io', ['proxy' => 'http://192.168.2.100:60000'])→getBody());
+echo($client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://192.168.2.100:60000'])→getBody());
 ```
 
 And, for Shared Datacenter Proxies, it will be:
 
 ```php
 $client = new Client(); 
-$r = $client->request('GET', 'https://ip.oxylabs.io', ['proxy' => 'http://dc.pr.oxylabs.io:10000']) 
+$r = $client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://dc.pr.oxylabs.io:10000']) 
 echo($r->getBody());
 ```
 
