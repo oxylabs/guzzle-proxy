@@ -103,14 +103,14 @@ echo($r->getBody());
 In the above code, we are using an example IP address `192.168.2.100`. You will have to
 replace it with your Dedicated Datacenter IP address. Also, you will have to use your Oxylabs' credentials instead of username and password.
 
-### Oxylabs Shared Datacenter HTTP Proxy Setup
+### Oxylabs Datacenter HTTP Proxy Setup
 
-For the shared Datacenter Proxy, the server address will be `dc.pr.oxylabs.io` and port
-`10000`. So the code will look like this:
+For the Datacenter Proxy, the server address will be `dc.oxylabs.io` and port
+`8000`. So the code will look like this:
 
 ```php
 $client = new Client();
-$r = $client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://username:password@dc.pr.oxylabs.io:10000'])
+$r = $client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://username:password@dc.oxylabs.io:8000'])
 echo($r->getBody());
 ```
 
@@ -134,11 +134,11 @@ $client = new Client();
 echo($client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://192.168.2.100:60000'])→getBody());
 ```
 
-And, for Shared Datacenter Proxies, it will be:
+And, for Datacenter Proxies, it will be:
 
 ```php
 $client = new Client(); 
-$r = $client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://dc.pr.oxylabs.io:10000']) 
+$r = $client->request('GET', 'https://ip.oxylabs.io/location', ['proxy' => 'http://dc.oxylabs.io:8000']) 
 echo($r->getBody());
 ```
 
